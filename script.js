@@ -1,8 +1,8 @@
 $(document).ready(function() {
-    // Function to get all employees
-    function getAllEmployees() {
+    // Function to get all players (employees)
+    function getAllPlayers() {
         $.ajax({
-            url: 'https://dummy.restapiexample.com/api/v1/employees',
+            url: 'https://dummy.cricketapi.com/api/v1/players',
             type: 'GET',
             dataType: 'json',
             success: function(response) {
@@ -16,10 +16,10 @@ $(document).ready(function() {
         });
     }
 
-    // Function to get single employee
-    function getEmployee(id) {
+    // Function to get single player (employee) by ID
+    function getPlayer(id) {
         $.ajax({
-            url: `https://dummy.restapiexample.com/api/v1/employee/${id}`,
+            url: `https://dummy.cricketapi.com/api/v1/players/${id}`,
             type: 'GET',
             dataType: 'json',
             success: function(response) {
@@ -33,18 +33,18 @@ $(document).ready(function() {
         });
     }
 
-    // Function to create new employee record
-    function createEmployee(data) {
+    // Function to create new player (employee) record
+    function createPlayer(data) {
         $.ajax({
-            url: 'https://dummy.restapiexample.com/api/v1/create',
+            url: 'https://dummy.cricketapi.com/api/v1/players',
             type: 'POST',
             dataType: 'json',
             data: data,
             success: function(response) {
                 // Handle success response
                 $('#createEmployeeResponse').html(JSON.stringify(response));
-                // Refresh the list of all employees after creation
-                getAllEmployees();
+                // Refresh the list of all players after creation
+                getAllPlayers();
             },
             error: function(xhr, status, error) {
                 // Handle error
@@ -53,18 +53,18 @@ $(document).ready(function() {
         });
     }
 
-    // Function to update employee record
-    function updateEmployee(id, data) {
+    // Function to update player (employee) record
+    function updatePlayer(id, data) {
         $.ajax({
-            url: `https://dummy.restapiexample.com/api/v1/update/${id}`,
+            url: `https://dummy.cricketapi.com/api/v1/players/${id}`,
             type: 'PUT',
             dataType: 'json',
             data: data,
             success: function(response) {
                 // Handle success response
                 $('#updateEmployeeResponse').html(JSON.stringify(response));
-                // Refresh the list of all employees after update
-                getAllEmployees();
+                // Refresh the list of all players after update
+                getAllPlayers();
             },
             error: function(xhr, status, error) {
                 // Handle error
@@ -73,17 +73,17 @@ $(document).ready(function() {
         });
     }
 
-    // Function to delete employee record
-    function deleteEmployee(id) {
+    // Function to delete player (employee) record
+    function deletePlayer(id) {
         $.ajax({
-            url: `https://dummy.restapiexample.com/api/v1/delete/${id}`,
+            url: `https://dummy.cricketapi.com/api/v1/players/${id}`,
             type: 'DELETE',
             dataType: 'json',
             success: function(response) {
                 // Handle success response
                 $('#deleteEmployeeResponse').html(JSON.stringify(response));
-                // Refresh the list of all employees after deletion
-                getAllEmployees();
+                // Refresh the list of all players after deletion
+                getAllPlayers();
             },
             error: function(xhr, status, error) {
                 // Handle error
@@ -97,7 +97,7 @@ $(document).ready(function() {
         event.preventDefault();
         var name = $('#name').val();
         var salary = $('#salary').val();
-        createEmployee({ name: name, salary: salary });
+        createPlayer({ name: name, salary: salary });
     });
 
     $('#updateEmployeeForm').submit(function(event) {
@@ -105,26 +105,26 @@ $(document).ready(function() {
         var id = $('#updateId').val();
         var name = $('#updateName').val();
         var salary = $('#updateSalary').val();
-        updateEmployee(id, { name: name, salary: salary });
+        updatePlayer(id, { name: name, salary: salary });
     });
 
     $('#deleteEmployeeForm').submit(function(event) {
         event.preventDefault();
         var id = $('#deleteId').val();
-        deleteEmployee(id);
+        deletePlayer(id);
     });
 
     $('#getAllEmployeesBtn').click(function() {
-        getAllEmployees();
+        getAllPlayers();
     });
 
     $('#getEmployeeBtn').click(function() {
-        var id = prompt("Enter Employee ID:");
+        var id = prompt("Enter Player ID:");
         if (id !== null && id !== "") {
-            getEmployee(id);
+            getPlayer(id);
         }
     });
 
-    // Initially load all employees when the page loads
-    getAllEmployees();
+    // Initially load all players when the page loads
+    getAllPlayers();
 });
