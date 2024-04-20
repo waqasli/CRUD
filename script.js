@@ -1,13 +1,13 @@
 $(document).ready(function() {
-    // Function to get all players (employees)
-    function getAllPlayers() {
+    // Function to get all posts
+    function getAllPosts() {
         $.ajax({
-            url: 'https://dummy.cricketapi.com/api/v1/players',
+            url: 'https://jsonplaceholder.typicode.com/posts',
             type: 'GET',
             dataType: 'json',
             success: function(response) {
                 // Handle success response
-                $('#getAllEmployeesResponse').html(JSON.stringify(response));
+                $('#getAllPostsResponse').html(JSON.stringify(response));
             },
             error: function(xhr, status, error) {
                 // Handle error
@@ -16,15 +16,15 @@ $(document).ready(function() {
         });
     }
 
-    // Function to get single player (employee) by ID
-    function getPlayer(id) {
+    // Function to get single post
+    function getPost(id) {
         $.ajax({
-            url: `https://dummy.cricketapi.com/api/v1/players/${id}`,
+            url: `https://jsonplaceholder.typicode.com/posts/${id}`,
             type: 'GET',
             dataType: 'json',
             success: function(response) {
                 // Handle success response
-                $('#getEmployeeResponse').html(JSON.stringify(response));
+                $('#getPostResponse').html(JSON.stringify(response));
             },
             error: function(xhr, status, error) {
                 // Handle error
@@ -33,18 +33,18 @@ $(document).ready(function() {
         });
     }
 
-    // Function to create new player (employee) record
-    function createPlayer(data) {
+    // Function to create new post
+    function createPost(data) {
         $.ajax({
-            url: 'https://dummy.cricketapi.com/api/v1/players',
+            url: 'https://jsonplaceholder.typicode.com/posts',
             type: 'POST',
             dataType: 'json',
             data: data,
             success: function(response) {
                 // Handle success response
-                $('#createEmployeeResponse').html(JSON.stringify(response));
-                // Refresh the list of all players after creation
-                getAllPlayers();
+                $('#createPostResponse').html(JSON.stringify(response));
+                // Refresh the list of all posts after creation
+                getAllPosts();
             },
             error: function(xhr, status, error) {
                 // Handle error
@@ -53,18 +53,18 @@ $(document).ready(function() {
         });
     }
 
-    // Function to update player (employee) record
-    function updatePlayer(id, data) {
+    // Function to update post
+    function updatePost(id, data) {
         $.ajax({
-            url: `https://dummy.cricketapi.com/api/v1/players/${id}`,
+            url: `https://jsonplaceholder.typicode.com/posts/${id}`,
             type: 'PUT',
             dataType: 'json',
             data: data,
             success: function(response) {
                 // Handle success response
-                $('#updateEmployeeResponse').html(JSON.stringify(response));
-                // Refresh the list of all players after update
-                getAllPlayers();
+                $('#updatePostResponse').html(JSON.stringify(response));
+                // Refresh the list of all posts after update
+                getAllPosts();
             },
             error: function(xhr, status, error) {
                 // Handle error
@@ -73,17 +73,17 @@ $(document).ready(function() {
         });
     }
 
-    // Function to delete player (employee) record
-    function deletePlayer(id) {
+    // Function to delete post
+    function deletePost(id) {
         $.ajax({
-            url: `https://dummy.cricketapi.com/api/v1/players/${id}`,
+            url: `https://jsonplaceholder.typicode.com/posts/${id}`,
             type: 'DELETE',
             dataType: 'json',
             success: function(response) {
                 // Handle success response
-                $('#deleteEmployeeResponse').html(JSON.stringify(response));
-                // Refresh the list of all players after deletion
-                getAllPlayers();
+                $('#deletePostResponse').html(JSON.stringify(response));
+                // Refresh the list of all posts after deletion
+                getAllPosts();
             },
             error: function(xhr, status, error) {
                 // Handle error
@@ -93,38 +93,38 @@ $(document).ready(function() {
     }
 
     // Example usage
-    $('#createEmployeeForm').submit(function(event) {
+    $('#createPostForm').submit(function(event) {
         event.preventDefault();
-        var name = $('#name').val();
-        var salary = $('#salary').val();
-        createPlayer({ name: name, salary: salary });
+        var title = $('#title').val();
+        var body = $('#body').val();
+        createPost({ title: title, body: body });
     });
 
-    $('#updateEmployeeForm').submit(function(event) {
+    $('#updatePostForm').submit(function(event) {
         event.preventDefault();
         var id = $('#updateId').val();
-        var name = $('#updateName').val();
-        var salary = $('#updateSalary').val();
-        updatePlayer(id, { name: name, salary: salary });
+        var title = $('#updateTitle').val();
+        var body = $('#updateBody').val();
+        updatePost(id, { title: title, body: body });
     });
 
-    $('#deleteEmployeeForm').submit(function(event) {
+    $('#deletePostForm').submit(function(event) {
         event.preventDefault();
         var id = $('#deleteId').val();
-        deletePlayer(id);
+        deletePost(id);
     });
 
-    $('#getAllEmployeesBtn').click(function() {
-        getAllPlayers();
+    $('#getAllPostsBtn').click(function() {
+        getAllPosts();
     });
 
-    $('#getEmployeeBtn').click(function() {
-        var id = prompt("Enter Player ID:");
+    $('#getPostBtn').click(function() {
+        var id = prompt("Enter Post ID:");
         if (id !== null && id !== "") {
-            getPlayer(id);
+            getPost(id);
         }
     });
 
-    // Initially load all players when the page loads
-    getAllPlayers();
+    // Initially load all posts when the page loads
+    getAllPosts();
 });

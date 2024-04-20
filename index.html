@@ -3,54 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cricket Team Management</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+    <title>Post Management System</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Cricket Team Management</h1>
-    <form id="createPlayerForm">
-        <h2>Add New Player</h2>
-        <label for="name">Player Name:</label>
-        <input type="text" id="name" name="name" required><br><br>
-        <label for="role">Player Role:</label>
-        <input type="text" id="role" name="role" required><br><br>
-        <button type="submit">Add Player</button>
-        <div class="response-container" id="createPlayerResponse"></div>
+    <h1>Post Management System</h1>
+    <!-- Form to create a new post -->
+    <form id="createPostForm">
+        <h2>Create New Post</h2>
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required><br><br>
+        <label for="body">Body:</label>
+        <textarea id="body" name="body" required></textarea><br><br>
+        <button type="submit">Create Post</button>
+        <div class="response-container" id="createPostResponse"></div>
     </form>
 
     <hr>
 
-    <form id="updatePlayerForm">
-        <h2>Update Player</h2>
-        <label for="updateId">Player ID:</label>
+    <!-- Form to update an existing post -->
+    <form id="updatePostForm">
+        <h2>Update Post</h2>
+        <label for="updateId">Post ID:</label>
         <input type="text" id="updateId" name="updateId" required><br><br>
-        <label for="updateName">New Player Name:</label>
-        <input type="text" id="updateName" name="updateName" required><br><br>
-        <label for="updateRole">New Player Role:</label>
-        <input type="text" id="updateRole" name="updateRole" required><br><br>
-        <button type="submit">Update Player</button>
-        <div class="response-container" id="updatePlayerResponse"></div>
+        <label for="updateTitle">Title:</label>
+        <input type="text" id="updateTitle" name="updateTitle" required><br><br>
+        <label for="updateBody">Body:</label>
+        <textarea id="updateBody" name="updateBody" required></textarea><br><br>
+        <button type="submit">Update Post</button>
+        <div class="response-container" id="updatePostResponse"></div>
     </form>
 
     <hr>
 
- 
-    <form id="deletePlayerForm">
-        <h2>Delete Player</h2>
-        <label for="deleteId">Player ID:</label>
+    <!-- Form to delete an existing post -->
+    <form id="deletePostForm">
+        <h2>Delete Post</h2>
+        <label for="deleteId">Post ID:</label>
         <input type="text" id="deleteId" name="deleteId" required><br><br>
-        <button type="submit">Delete Player</button>
-        <div class="response-container" id="deletePlayerResponse"></div>
+        <button type="submit">Delete Post</button>
+        <div class="response-container" id="deletePostResponse"></div>
     </form>
 
     <hr>
-    <button id="getAllPlayersBtn">Get All Players</button>
-    <div class="response-container" id="getAllPlayersResponse"></div>
 
-   
-    <button id="getPlayerBtn">Get Player by ID</button>
-    <div class="response-container" id="getPlayerResponse"></div>
+    <!-- Button to retrieve all posts -->
+    <button id="getAllPostsBtn">Get All Posts</button>
+    <div class="response-container" id="getAllPostsResponse"></div>
+
+    <!-- Button to retrieve a single post -->
+    <button id="getPostBtn">Get Post by ID</button>
+    <div class="response-container" id="getPostResponse"></div>
+
 </body>
 </html>
